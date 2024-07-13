@@ -22,7 +22,7 @@ Q. 두 정수 A와 B를 입력받은 다음, A+B를 출력하는 프로그램을
 예제 출력  `3`
 
 ```python
-a, b = int(input9())
+a, b = int(input())
 print(a+b)
 ```
 ---
@@ -40,7 +40,7 @@ Q. 두 정수 A와 B를 입력받은 다음, A-B를 출력하는 프로그램을
 예제 출력  `1`
 
 ```python
-a, b = int(input9())
+a, b = int(input())
 print(a-b)
 ```
 ---
@@ -57,7 +57,7 @@ Q. 두 정수 A와 B를 입력받은 다음, AXB를 출력하는 프로그램을
 예제 출력  `2`
 
 ```python
-a, b = int(input9())
+a, b = int(input())
 print(a*b)
 ```
 ---
@@ -74,7 +74,7 @@ Q. 두 정수 A와 B를 입력받은 다음, A/B를 출력하는 프로그램을
 예제 출력  `0.3333333333`
 
 ```python
-a, b = int(input9())
+a, b = int(input())
 print(a/b)
 ```
 ---
