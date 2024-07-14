@@ -194,12 +194,22 @@ for p in range (1,N+1):
 
 for q in range(M):
   i, j = map(int, input().split()) #i,j바구니 교환
-  N_list.insert(i-1,N_list[j-1]) #(i-1)자리에 (j-1)의 숫자 추가
-  del N_list[j]
-  N_list.insert(j, N_list[i]) #숫자가 한칸씩 밀리므로
-  del N_list[i]
+  if i < j:
+    N_list.insert(i-1,N_list[j-1]) #(i-1)자리에 (j-1)의 숫자 추가
+    del N_list[j]
+    N_list.insert(j, N_list[i]) #숫자가 한칸씩 밀리므로
+    del N_list[i]
+  if i > j:
+    N_list.insert(j-1,N_list[i-1])
+    del N_list[i]
+    N_list.insert(i, N_list[j])
+    del N_list[j]
+  if i == j:
+    continue
 
-print(N_list[0],N_list[1],N_list[2],N_list[3],N_list[4])
+for r in range (N):
+  print(N_list[r],end=" ")
+  r += 1
 ```
 ---
 #### 과제 안 내신 분~(#5597)
@@ -250,7 +260,7 @@ for i in range (10):
   if B not in D:
     D.append(B)
 
-len(D)
+print(len(D))
 ```
 ---
 #### 바구니 뒤집기
