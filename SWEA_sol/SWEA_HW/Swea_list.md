@@ -22,11 +22,31 @@
 
 ```py
 T = int(input())
-for tc in range(1, T+1):
+for i in range(1,T+1):
+  N = int(input()) 
+  a = str(input())             # 연속된 숫자를 인덱싱 하기 위해 문자열로 바꿈
+  a_list = []        
+  for x in range(N):
+    a_list.append(int(a[x]))   # a_list에 바꿨던 문자열을 숫자로 바꾸어 다시 넣음
 
+    count_m = [0]*10           # 0부터 9까지의 자리를 count_m에 할당(?)
 
+    for j in a_list:
+      count_m[j] += 1          # 각 숫자가 몇번 나왔는지 count_m에 기록
+    
+    max_lst = []               # 가장 많은 카드의 숫자를 넣는 리스트
+    max_num = max(count_m)     # 가장 많은 카드의 수
+
+    for k in range(len(count_m)):
+      if count_m[k] == max(count_m):
+        max_lst.append(k)
+  
+  print(f'#{i} {max(max_lst)} {max_num}')
 
 ```
+Sol point
+
+자리를 셀 수 있는 비어있는 리스트를 만든다.
 
 
 ---
