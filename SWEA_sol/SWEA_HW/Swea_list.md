@@ -1,5 +1,51 @@
 ### List
 
+#### min max(#4828)
+
+N개의 양의 정수에서 가장 큰 수와 가장 작은 수의 차이를 출력하시오.
+
+
+[입력]
+
+첫 줄에 테스트 케이스의 수 T가 주어진다. ( 1 ≤ T ≤ 50 )
+
+각 케이스의 첫 줄에 양수의 개수 N이 주어진다. ( 5 ≤ N ≤ 1000 )
+
+다음 줄에 N개의 양수 ai가 주어진다. ( 1 ≤ ai≤ 1000000 )
+
+[출력]
+
+각 줄마다 "#T" (T는 테스트 케이스 번호)를 출력한 뒤, 답을 출력한다.
+
+```py
+#1. Sort 내장 함수 이용
+T = int(input())
+for i in range(1, T+1):
+  N = int(input())
+  a = list(map(int, input().split()))
+  a.sort()
+  print(f'#{i} {a[-1]-a[0]}')
+```
+```py
+#2. BubbleSort 이용
+T = int(input())
+for tc in range(1, T+1):
+  N = int(input())
+  a = list(map(int, input().split()))
+
+  for i in range(N-1, 0, -1):
+    for j in range(0, i):
+      if a[j] > a[j+1]:
+        a[j], a[j+1] = a[j+1], a[j]
+  result = a[-1]-a[0]
+  print(f'#{tc} {result}')
+```
+- Sol_point
+
+배열하는 다양한 방법을 알아두자. 
+
+---
+
 #### 숫자카드(#4834)
 
 0에서 9까지 숫자가 적힌 N장의 카드가 주어진다.
@@ -122,4 +168,48 @@ for i in range(T):
 
     다양한 풀이 방법 숙지해보기
 ---
+#### 풍선팡2
+종이 꽃가루가 들어있는 풍선이 NxM 크기의 격자판에 붙어있는데, 어떤 풍선을 터뜨리면 상하좌우의 풍선이 추가로 터진다고 한다.
 
+다음의 경우 가운데 풍선을 터뜨리면 상하좌우의 풍선이 추가로 1개씩 터지면서 총 5개의 꽃가루가 날리게 된다.
+
+
+
+NxM개의 풍선에 들어있는 종이 꽃가루 개수A가 주어지면, 한 개의 풍선을 선택해 터뜨렸을 때 날릴 수 있는 꽃가루 수 중 최대값을 출력하는 프로그램을 만드시오.
+
+(3<=N, M<=100)
+
+
+
+[입력]
+
+첫 줄에 테스트케이스 수 T, 다음 줄부터 테스트케이스 별로 첫 줄에 N과 M, 이후 N줄에 걸쳐 M개씩 풍선에 든 종이 꽃가루 개수가 주어진다.
+
+
+[출력]
+
+'#'과 테스트케이스 번호, 빈칸에 이어 종이 꽃가루의 최대 개수를 출력한다.
+
+```py
+T = int(input())
+dij = [[0,1],[1,0],[0,-1],[-1,0]] # 네 방향 검사
+
+for tc in range(1, T+1):
+    N, M = map(int, input().split())
+    ball_arr = [list(map(int, input().split())) for _ in range(N)] # N*M 배열
+    add_ball =[]                                # 순회하면서 저장한 값
+    for i in range(N):
+        for j in range(M):
+            p = ball_arr[i][j]                  # 현재 위치(기준위치)
+            for di, dj in (dij):
+                ni = i + di
+                nj = j + dj
+                if 0<= ni < N and 0 <= nj < M:
+                    p += ball_arr[ni][nj]
+            add_ball.append(p)
+    print(f'#{tc} {max(add_ball)}')
+```
+- Sol_point
+
+  delta 탐색을 이용한 방향 탐색.
+---
