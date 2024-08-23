@@ -76,3 +76,4 @@ for _ in range(1, Testcase+1):
   print(f'#{tc} {result}')
 ```
 ---
+알고리즘 파이팅
